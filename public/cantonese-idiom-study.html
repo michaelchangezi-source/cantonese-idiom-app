@@ -14,6 +14,7 @@ header p{font-size:14px;opacity:.85}
 .stat{background:rgba(255,255,255,.15);border-radius:20px;padding:4px 14px;font-size:13px}
 nav{background:#fff;border-bottom:1px solid #e7e5e4;position:sticky;top:0;z-index:100;padding:10px 16px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 nav a{padding:5px 14px;border-radius:20px;font-size:13px;font-weight:600;text-decoration:none;transition:all .2s;cursor:pointer}
+.nav-back{color:#fff;background:#b45309;border:1.5px solid #b45309;font-weight:700}.nav-back:hover{background:#92400e;border-color:#92400e}
 .nav-0{color:#57534e;border:1.5px solid #a8a29e}.nav-0:hover,.nav-0.active{background:#57534e;color:#fff}
 .nav-1{color:#16a34a;border:1.5px solid #16a34a}.nav-1:hover,.nav-1.active{background:#16a34a;color:#fff}
 .nav-2{color:#2563eb;border:1.5px solid #2563eb}.nav-2:hover,.nav-2.active{background:#2563eb;color:#fff}
@@ -66,6 +67,7 @@ footer{text-align:center;padding:24px;color:#a8a29e;font-size:13px;border-top:1p
 </header>
 
 <nav>
+  <a class="nav-back" href="/">← 返回測驗 Back to Quiz</a>
   <a class="nav-0 active" onclick="filterLevel(0,this)">全部 All</a>
   <a class="nav-1" onclick="filterLevel(1,this)">初級 Beginner (100)</a>
   <a class="nav-2" onclick="filterLevel(2,this)">中級 Elementary (100)</a>

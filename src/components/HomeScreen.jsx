@@ -48,6 +48,14 @@ export default function HomeScreen({ progress, totalGroups, completedGroups, onS
         <div className="text-right text-xs text-stone-400 mt-1">⭐ {progress.totalStars} 星 Stars</div>
       </div>
 
+      {/* Study Guide link */}
+      <a
+        href="/cantonese-idiom-study.html"
+        className="flex items-center justify-center gap-3 w-full py-4 mb-6 bg-amber-500 hover:bg-amber-600 active:scale-95 text-white font-bold text-lg rounded-2xl shadow-md transition-all"
+      >
+        📚 溫習冊 Study Guide
+      </a>
+
       <div className="grid grid-cols-3 sm:grid-cols-4 gap-3">
         {LEVEL_GROUPS.map((group, idx) => {
           const gData = progress.levelGroups[idx];

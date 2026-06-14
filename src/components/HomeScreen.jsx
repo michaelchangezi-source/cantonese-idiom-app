@@ -8,7 +8,6 @@ export default function HomeScreen({ progress, totalGroups, completedGroups, onS
 
   return (
     <div className="max-w-2xl mx-auto px-4 pb-10">
-      {/* Header */}
       <div className="flex items-center justify-between py-4">
         <div>
           <h1 className="text-2xl font-bold text-amber-700">廣東話成語闖關</h1>
@@ -17,30 +16,28 @@ export default function HomeScreen({ progress, totalGroups, completedGroups, onS
         <button
           onClick={() => setShowSettings(!showSettings)}
           className="p-2 rounded-full hover:bg-stone-200 transition-colors text-stone-500"
-          title="設定"
+          title="設定 Settings"
         >
           ⚙️
         </button>
       </div>
 
-      {/* Settings panel */}
       {showSettings && (
         <div className="bg-white rounded-xl shadow p-4 mb-4 border border-stone-200">
-          <h2 className="font-semibold text-stone-700 mb-3">設定</h2>
+          <h2 className="font-semibold text-stone-700 mb-3">設定 Settings</h2>
           <button
             onClick={() => { onReset(); setShowSettings(false); }}
             className="bg-red-50 border border-red-200 text-red-600 px-4 py-2 rounded-lg text-sm hover:bg-red-100 transition-colors"
           >
-            重置所有進度
+            重置所有進度 Reset Progress
           </button>
         </div>
       )}
 
-      {/* Progress bar */}
       <div className="bg-white rounded-xl shadow p-4 mb-6 border border-stone-200">
         <div className="flex justify-between text-sm text-stone-600 mb-2">
-          <span>總進度</span>
-          <span>{completedGroups} / {totalGroups} 關卡完成</span>
+          <span>總進度 Progress</span>
+          <span>{completedGroups} / {totalGroups} 關卡完成 Levels Done</span>
         </div>
         <div className="h-3 bg-stone-100 rounded-full overflow-hidden">
           <div
@@ -48,10 +45,9 @@ export default function HomeScreen({ progress, totalGroups, completedGroups, onS
             style={{ width: `${pct}%` }}
           />
         </div>
-        <div className="text-right text-xs text-stone-400 mt-1">⭐ {progress.totalStars} 星</div>
+        <div className="text-right text-xs text-stone-400 mt-1">⭐ {progress.totalStars} 星 Stars</div>
       </div>
 
-      {/* Level grid */}
       <div className="grid grid-cols-3 sm:grid-cols-4 gap-3">
         {LEVEL_GROUPS.map((group, idx) => {
           const gData = progress.levelGroups[idx];
@@ -75,9 +71,9 @@ export default function HomeScreen({ progress, totalGroups, completedGroups, onS
                   <span className="text-2xl">🔒</span>
                 </div>
               )}
-              <div className="text-xs text-stone-400 mb-1">關卡</div>
+              <div className="text-xs text-stone-400 mb-1">關卡 Level</div>
               <div className="text-xl font-bold text-stone-700">{idx + 1}</div>
-              <div className={`text-xs px-1.5 py-0.5 rounded-full inline-block mt-1 ${DIFFICULTY_COLORS[group.difficulty]}`}>
+              <div className={`text-xs px-1.5 py-0.5 rounded-full inline-block mt-1 leading-tight ${DIFFICULTY_COLORS[group.difficulty]}`}>
                 {DIFFICULTY_LABELS[group.difficulty]}
               </div>
               <div className="mt-1.5">

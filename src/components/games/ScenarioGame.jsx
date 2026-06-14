@@ -42,10 +42,10 @@ export default function ScenarioGame({ idioms, onFinish, onBack }) {
   return (
     <div className="max-w-md mx-auto px-4 pb-10">
       <div className="flex items-center gap-3 py-4">
-        <button onClick={onBack} className="p-2 rounded-full hover:bg-stone-200 text-stone-500">←</button>
+        <button onClick={onBack} className="p-2 rounded-full hover:bg-stone-200 text-stone-500" title="返回 Back">←</button>
         <div>
-          <h1 className="text-lg font-bold text-stone-800">情景選擇</h1>
-          <p className="text-xs text-stone-400">選擇正確成語</p>
+          <h1 className="text-lg font-bold text-stone-800">情景選擇 Context Choice</h1>
+          <p className="text-xs text-stone-400">選擇正確成語 Choose the correct idiom</p>
         </div>
         <div className="ml-auto text-sm text-stone-500">{current + 1}/{questions.length}</div>
       </div>
@@ -55,7 +55,7 @@ export default function ScenarioGame({ idioms, onFinish, onBack }) {
       </div>
 
       <div className="bg-white rounded-2xl shadow p-5 mb-6 border border-stone-200">
-        <p className="text-xs text-stone-400 mb-2">選出合適的成語填入空格：</p>
+        <p className="text-xs text-stone-400 mb-2">選出合適的成語 Choose the correct idiom:</p>
         <p className="text-lg text-stone-800 leading-relaxed">{q.blanked}</p>
       </div>
 
@@ -74,7 +74,7 @@ export default function ScenarioGame({ idioms, onFinish, onBack }) {
       {answered !== null && (
         <div className={`rounded-xl p-4 mb-4 ${answered.id === q.idiom.id ? 'bg-green-50 border border-green-200' : 'bg-red-50 border border-red-200'}`}>
           <p className="font-semibold text-stone-700 mb-1">
-            {answered.id === q.idiom.id ? '✅ 正確！' : `❌ 正確答案：${q.idiom.char}`}
+            {answered.id === q.idiom.id ? '✅ 正確 Correct!' : `❌ 正確答案 Answer: ${q.idiom.char}`}
           </p>
           <p className="text-sm text-stone-600">{q.idiom.meaning_zh}</p>
           <p className="text-xs text-stone-400">{q.idiom.meaning_en}</p>
@@ -83,7 +83,7 @@ export default function ScenarioGame({ idioms, onFinish, onBack }) {
 
       {answered !== null && (
         <button onClick={next} className="w-full py-3 bg-amber-400 hover:bg-amber-500 text-white font-bold rounded-xl transition-colors">
-          {current + 1 >= questions.length ? '查看結果' : '下一題'}
+          {current + 1 >= questions.length ? '查看結果 Results' : '下一題 Next'}
         </button>
       )}
     </div>

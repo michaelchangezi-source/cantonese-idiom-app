@@ -64,10 +64,10 @@ export default function ListenGame({ idioms, onFinish, onBack }) {
   return (
     <div className="max-w-md mx-auto px-4 pb-10">
       <div className="flex items-center gap-3 py-4">
-        <button onClick={onBack} className="p-2 rounded-full hover:bg-stone-200 text-stone-500">←</button>
+        <button onClick={onBack} className="p-2 rounded-full hover:bg-stone-200 text-stone-500" title="返回 Back">←</button>
         <div>
-          <h1 className="text-lg font-bold text-stone-800">聽音選字</h1>
-          <p className="text-xs text-stone-400">聆聽後選出成語</p>
+          <h1 className="text-lg font-bold text-stone-800">聽音選字 Listen & Choose</h1>
+          <p className="text-xs text-stone-400">聆聽後選出成語 Listen and identify the idiom</p>
         </div>
         <div className="ml-auto text-sm text-stone-500">{current + 1}/{questions.length}</div>
       </div>
@@ -78,20 +78,20 @@ export default function ListenGame({ idioms, onFinish, onBack }) {
 
       {ttsUnavailable ? (
         <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6 text-sm text-amber-700">
-          您的裝置不支援廣東話語音，請嘗試在 iPhone Safari 開啟
+          您的裝置不支援廣東話語音 Your device does not support Cantonese TTS — 請嘗試在 iPhone Safari 開啟 Try iPhone Safari
         </div>
       ) : (
         <div className="bg-white rounded-2xl shadow p-8 mb-6 border border-stone-200 text-center">
-          <p className="text-xs text-stone-400 mb-4">聆聽成語，選出正確答案</p>
+          <p className="text-xs text-stone-400 mb-4">聆聽成語，選出正確答案 Listen and choose the correct idiom</p>
           <button
             onClick={playAudio}
             className="w-20 h-20 rounded-full bg-amber-400 hover:bg-amber-500 text-white text-4xl shadow-lg active:scale-95 transition-all mx-auto flex items-center justify-center"
           >
             🔊
           </button>
-          <p className="text-xs text-stone-400 mt-3">點擊播放</p>
+          <p className="text-xs text-stone-400 mt-3">點擊播放 Tap to play</p>
           {answered !== null && (
-            <button onClick={playAudio} className="mt-2 text-xs text-amber-600 underline">重新播放</button>
+            <button onClick={playAudio} className="mt-2 text-xs text-amber-600 underline">重新播放 Replay</button>
           )}
         </div>
       )}
@@ -112,7 +112,7 @@ export default function ListenGame({ idioms, onFinish, onBack }) {
       {answered !== null && (
         <div className={`rounded-xl p-4 mb-4 ${answered.id === q.idiom.id ? 'bg-green-50 border border-green-200' : 'bg-red-50 border border-red-200'}`}>
           <p className="font-semibold text-stone-700 mb-1">
-            {answered.id === q.idiom.id ? '✅ 正確！' : `❌ 正確答案：${q.idiom.char}`}
+            {answered.id === q.idiom.id ? '✅ 正確 Correct!' : `❌ 正確答案 Answer: ${q.idiom.char}`}
           </p>
           <p className="text-sm text-stone-500">{q.idiom.jyutping}</p>
           <p className="text-sm text-stone-600">{q.idiom.meaning_zh}</p>
@@ -122,7 +122,7 @@ export default function ListenGame({ idioms, onFinish, onBack }) {
 
       {answered !== null && (
         <button onClick={next} className="w-full py-3 bg-amber-400 hover:bg-amber-500 text-white font-bold rounded-xl transition-colors">
-          {current + 1 >= questions.length ? '查看結果' : '下一題'}
+          {current + 1 >= questions.length ? '查看結果 Results' : '下一題 Next'}
         </button>
       )}
     </div>

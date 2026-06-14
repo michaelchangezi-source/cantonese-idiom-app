@@ -23,7 +23,11 @@ export function buildLevelGroups() {
 export const LEVEL_GROUPS = buildLevelGroups();
 
 export const DIFFICULTY_LABELS = {
-  1: '初級', 2: '中級', 3: '高級', 4: '進階', 5: '專家',
+  1: '初級 Beginner',
+  2: '中級 Elementary',
+  3: '高級 Intermediate',
+  4: '進階 Advanced',
+  5: '專家 Expert',
 };
 
 export const DIFFICULTY_COLORS = {

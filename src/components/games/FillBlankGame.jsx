@@ -48,24 +48,23 @@ export default function FillBlankGame({ idioms, onFinish, onBack }) {
   return (
     <div className="max-w-md mx-auto px-4 pb-10">
       <div className="flex items-center gap-3 py-4">
-        <button onClick={onBack} className="p-2 rounded-full hover:bg-stone-200 text-stone-500">←</button>
+        <button onClick={onBack} className="p-2 rounded-full hover:bg-stone-200 text-stone-500" title="返回 Back">←</button>
         <div>
-          <h1 className="text-lg font-bold text-stone-800">填字遊戲</h1>
-          <p className="text-xs text-stone-400">填入缺少的字</p>
+          <h1 className="text-lg font-bold text-stone-800">填字遊戲 Fill in the Blank</h1>
+          <p className="text-xs text-stone-400">填入缺少的字 Fill in the missing character</p>
         </div>
         <div className="ml-auto text-sm text-stone-500">{current + 1}/{questions.length}</div>
       </div>
 
-      {/* Progress bar */}
       <div className="h-2 bg-stone-100 rounded-full mb-6">
-        <div className="h-full bg-amber-400 rounded-full transition-all" style={{ width: `${((current) / questions.length) * 100}%` }} />
+        <div className="h-full bg-amber-400 rounded-full transition-all" style={{ width: `${(current / questions.length) * 100}%` }} />
       </div>
 
       <div className="bg-white rounded-2xl shadow p-6 mb-6 border border-stone-200">
         <div className="text-4xl font-bold text-center text-stone-800 mb-2 tracking-widest">
           {q.display}
         </div>
-        <div className="text-center text-sm text-stone-400">{q.blankJyutping && `缺少的字: ${q.blankJyutping}`}</div>
+        <div className="text-center text-sm text-stone-400">{q.blankJyutping && `缺少的字 Missing: ${q.blankJyutping}`}</div>
       </div>
 
       <div className="grid grid-cols-2 gap-3 mb-6">
@@ -83,7 +82,7 @@ export default function FillBlankGame({ idioms, onFinish, onBack }) {
       {answered !== null && (
         <div className={`rounded-xl p-4 mb-4 ${answered === q.correctChar ? 'bg-green-50 border border-green-200' : 'bg-red-50 border border-red-200'}`}>
           <p className="font-semibold text-stone-700 mb-1">
-            {answered === q.correctChar ? '✅ 正確！' : `❌ 正確答案：${q.correctChar}`}
+            {answered === q.correctChar ? '✅ 正確 Correct!' : `❌ 正確答案 Answer: ${q.correctChar}`}
           </p>
           <p className="text-sm text-stone-600">{q.idiom.char} — {q.idiom.meaning_zh}</p>
           <p className="text-xs text-stone-400">{q.idiom.meaning_en}</p>
@@ -95,7 +94,7 @@ export default function FillBlankGame({ idioms, onFinish, onBack }) {
           onClick={next}
           className="w-full py-3 bg-amber-400 hover:bg-amber-500 text-white font-bold rounded-xl transition-colors"
         >
-          {current + 1 >= questions.length ? '查看結果' : '下一題'}
+          {current + 1 >= questions.length ? '查看結果 Results' : '下一題 Next'}
         </button>
       )}
     </div>

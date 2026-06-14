@@ -4,13 +4,13 @@ function shuffle(arr) {
   return [...arr].sort(() => Math.random() - 0.5);
 }
 
-export default function MatchingGame({ idioms, onFinish, onBack, groupIdx, subIdx }) {
+export default function MatchingGame({ idioms, onFinish, onBack }) {
   const rightCol = useMemo(() => shuffle(idioms), [idioms]);
   const [selectedLeft, setSelectedLeft] = useState(null);
   const [selectedRight, setSelectedRight] = useState(null);
-  const [matched, setMatched] = useState(new Set()); // set of idiom ids
+  const [matched, setMatched] = useState(new Set());
   const [mistakes, setMistakes] = useState(0);
-  const [flash, setFlash] = useState(null); // 'correct' | 'wrong'
+  const [flash, setFlash] = useState(null);
 
   function selectLeft(idiom) {
     if (matched.has(idiom.id)) return;
@@ -51,9 +51,7 @@ export default function MatchingGame({ idioms, onFinish, onBack, groupIdx, subId
   function cardClass(idiom, side) {
     const isMatched = matched.has(idiom.id);
     const isSelected = side === 'left' ? selectedLeft?.id === idiom.id : selectedRight?.id === idiom.id;
-
     if (isMatched) return 'opacity-0 pointer-events-none transition-opacity duration-500';
-
     let base = 'p-3 rounded-xl border-2 cursor-pointer select-none transition-all active:scale-95 ';
     if (flash === 'correct' && isSelected) return base + 'bg-green-100 border-green-400 scale-95';
     if (flash === 'wrong' && isSelected) return base + 'bg-red-100 border-red-400 animate-pulse';
@@ -64,18 +62,17 @@ export default function MatchingGame({ idioms, onFinish, onBack, groupIdx, subId
   return (
     <div className="max-w-2xl mx-auto px-4 pb-10">
       <div className="flex items-center gap-3 py-4">
-        <button onClick={onBack} className="p-2 rounded-full hover:bg-stone-200 text-stone-500">←</button>
+        <button onClick={onBack} className="p-2 rounded-full hover:bg-stone-200 text-stone-500" title="返回 Back">←</button>
         <div>
-          <h1 className="text-lg font-bold text-stone-800">配對遊戲</h1>
-          <p className="text-xs text-stone-400">配對成語與意思</p>
+          <h1 className="text-lg font-bold text-stone-800">配對遊戲 Matching</h1>
+          <p className="text-xs text-stone-400">配對成語與意思 Match idioms to meanings</p>
         </div>
         <div className="ml-auto text-sm text-stone-500">
-          {matched.size}/{idioms.length} 已配對 · 錯誤: {mistakes}
+          {matched.size}/{idioms.length} 已配對 Matched · 錯誤 Errors: {mistakes}
         </div>
       </div>
 
       <div className="flex gap-3">
-        {/* Left column: idioms */}
         <div className="flex-1 space-y-2">
           {idioms.map(idiom => (
             <button key={idiom.id} onClick={() => selectLeft(idiom)} className={cardClass(idiom, 'left')}>
@@ -85,7 +82,6 @@ export default function MatchingGame({ idioms, onFinish, onBack, groupIdx, subId
           ))}
         </div>
 
-        {/* Right column: meanings (shuffled) */}
         <div className="flex-1 space-y-2">
           {rightCol.map(idiom => (
             <button key={idiom.id} onClick={() => selectRight(idiom)} className={cardClass(idiom, 'right')}>
